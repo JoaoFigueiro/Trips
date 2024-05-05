@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trips Data</title>
+</head>
+<body>
+    <h1 align="center">Trips Data</h1>
+    <form action="/" method="post">
+        <input type="text" name="regionInput" id="regionInput" placeholder="Search for region..." style="margin-left:7.5%; margin-bottom: 5px; width:74.5%;">
+        <input type="submit" value="Submit">
+        <input type="submit" value="Clear Filter">
+    </form>
+    <form action="/" method="post">
+        <input type="text" name="boundingBox" id="boundingBox" placeholder="Search for bounding box... xmin ymin xmax ymax" style="margin-left:7.5%; margin-bottom: 5px; width:74.5%;">
+        <input type="submit" value="Submit">
+        <input type="submit" value="Clear Filter">
+    </form>
+    <h3 style="margin-left:7.5%; margin-bottom: 1.5%; width:44.5%;">Weekly average number of trips for filtered area: {{ weekly_average }}</h3>
+    <table border="1", style="width:85%", align="center">
+        <tr>
+            <th style="width:10%;">Region</th>
+            <th style="width:37%;">Origin Coordinates</th>
+            <th style="width:37%;">Destination Coordinates</th>
+            <th style="width:15%;">Time Window</th>
+        </tr>
+        {% for trip in trips %}
+            <tr>
+                <td>{{ trip['region'] }}</td>
+                <td>{{ trip['origin_coord'] }}</td>
+                <td>{{ trip['destination_coord'] }}</td>
+                <td>{{ trip['time_window'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
